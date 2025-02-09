@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PengajuanLayanan;
 use Illuminate\Http\Request;
 
 class PengajuanController extends Controller
@@ -11,7 +12,8 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        //
+        $pengajuan = PengajuanLayanan::all();
+        return response()->json($pengajuan);
     }
 
     /**
@@ -19,7 +21,17 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $pengajuan = PengajuanLayanan::create($request->all());
+
+        return response()->json([
+            'message' => 'Pengajuan created successfully',
+            'data' => $pengajuan
+        ], 201);
     }
 
     /**
@@ -27,7 +39,9 @@ class PengajuanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pengajuan = PengajuanLayanan::findOrFail($id);
+
+        return response()->json($pengajuan);
     }
 
     /**
@@ -35,7 +49,19 @@ class PengajuanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pengajuan = PengajuanLayanan::findOrFail($id);
+
+        $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $pengajuan->update($request->all());
+
+        return response()->json([
+            'message' => 'Pengajuan updated successfully',
+            'data' => $pengajuan
+        ]);
     }
 
     /**
@@ -43,6 +69,11 @@ class PengajuanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pengajuan = PengajuanLayanan::findOrFail($id);
+        $pengajuan->delete();
+
+        return response()->json([
+            'message' => 'Pengajuan deleted successfully'
+        ]);
     }
 }
