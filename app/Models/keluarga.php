@@ -13,4 +13,9 @@ class keluarga extends Model
     protected $fillable = [
         'no_kk'
     ];
+
+    public function penduduk()
+    {
+        return $this->hasMany(User::class);
+    }
 }

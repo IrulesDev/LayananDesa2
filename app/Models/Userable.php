@@ -14,4 +14,14 @@ class Userable extends Model
         'userable_id',
         'userable_type'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 }

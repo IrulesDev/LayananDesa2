@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('nik')->unique();
-            $table->foreignId('keluarga_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('keluarga_id')->references('id')->on('keluargas')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

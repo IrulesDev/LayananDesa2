@@ -13,4 +13,13 @@ class PerangkatDesa extends Model
         'pengajuan_id',
         'perangkat'
     ];
+
+    public function pengajuan(){
+        return $this->belongsTo(PengajuanLayanan::class);
+    }
+
+    public function user()
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }

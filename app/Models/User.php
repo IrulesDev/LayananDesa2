@@ -47,4 +47,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function keluarga()
+    {
+        return $this->belongsTo(Keluarga::class);
+    }
+
+    public function userable(){
+        return $this->hasMany(Userable::class);
+    }
 }

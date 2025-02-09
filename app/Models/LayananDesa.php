@@ -13,4 +13,13 @@ class LayananDesa extends Model
         'pengajuan_id',
         'layanan'
     ];
+
+    public function pengajuan(){
+        return $this->belongsTo(PengajuanLayanan::class);
+    }
+
+    public function user()
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }

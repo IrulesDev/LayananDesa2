@@ -12,4 +12,18 @@ class PengajuanLayanan extends Model
     protected $fillable = [
         'via'
     ];
+
+    
+    public function perangkat(){
+        return $this->hasMany(PerangkatDesa::class);
+    }
+    
+    public function layanan(){
+        return $this->hasMany(LayananDesa::class);
+
+    }
+    public function user()
+    {
+        return $this->morphToMany(User::class, 'userable');
+    }
 }
