@@ -42,21 +42,25 @@
                         <p class="text-muted">Before you get started, you must login or register if you don't already
                             have an account.</p>
                         <form method="POST"
-                            action="#"
+                            action="{{ route('login') }}"
                             class="needs-validation"
                             novalidate="">
+                            @csrf
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input id="email"
                                     type="email"
                                     class="form-control"
+                                    @error('email') is-invalid @enderror
                                     name="email"
                                     tabindex="1"
                                     required
                                     autofocus>
+                                    @error('email')
                                 <div class="invalid-feedback">
-                                    Please fill in your email
+                                    {{ $message }}
                                 </div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -66,13 +70,16 @@
                                 </div>
                                 <input id="password"
                                     type="password"
+                                    @error('password') is-invalid @enderror
                                     class="form-control"
                                     name="password"
                                     tabindex="2"
                                     required>
+                                    @error('password')
                                 <div class="invalid-feedback">
-                                    please fill in your password
+                                    {{ $message }}
                                 </div>
+                                @enderror   
                             </div>
 
                             <div class="form-group">
@@ -145,7 +152,21 @@
     <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
+    <script>
+        // JavaScript buat toggle icon mata dan visibility password
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
 
+        togglePassword.addEventListener('click', function() {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // toggle the eye / eye slash icon
+            this.classList.toggle('fa-eye-slash');
+            this.classList.toggle('fa-eye');
+        });
+    </script>
     <!-- Page Specific JS File -->
 
     <!-- Template JS File -->
