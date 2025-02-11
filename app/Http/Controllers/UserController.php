@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -99,5 +100,10 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json(['message' => 'User ' . $user->name . ' successfully deleted']);
+    }
+
+    public function dashboard()
+    {
+    return view('dashboard', ['user' => Auth::user()]);
     }
 }

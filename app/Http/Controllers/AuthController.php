@@ -6,6 +6,7 @@ use App\Models\User;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\Log as FacadesLog;
 
@@ -53,5 +54,12 @@ class AuthController extends Controller
         return response()->json([
             'message' => $user->name.' Berhasil Logout'
         ]);
+
+        // Auth::logout();
+
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
+        // return redirect('/');
     }
 }
