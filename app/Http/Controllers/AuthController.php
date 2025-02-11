@@ -22,8 +22,8 @@ class AuthController extends Controller
             ]);
         } catch (ValidationException $e) {
             return response()->json([
-               'error_message' => $e->getMessage()
-            ]);
+               'error_message' => 'ini eror'
+            ],422);
         }
 
         $user = User::where('email', $validated['email'])->first();
@@ -47,19 +47,18 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
 
+        Log::info($request->user());
+
         $user = $request->user();
 
+        Log::info('setelah request user');
+        
         $user->tokens()->delete();
 
+        Log::info('setelah token delete');
+        
         return response()->json([
             'message' => $user->name.' Berhasil Logout'
-        ]);
-
-        // Auth::logout();
-
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
-
-        // return redirect('/');
+            ]);
     }
 }

@@ -19,5 +19,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('keluarga', KeluargaController::class);
     Route::apiResource('pengajuan', PengajuanController::class);
     Route::apiResource('layanan', LayananController::class);
-    Route::post('logout', [AuthController::class, 'logout'])->name('api.logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
 });
