@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class userWebController extends Controller
+class UserWebController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,15 +44,33 @@ class userWebController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Cari user berdasarkan ID
+        // $user = User::findOrFail($id);
+
+        // Tampilkan view edit dengan data user
+        // return view('user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi input
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|email|max:255|unique:users,email,'.$id,
+        // ]);
+
+        // Cari user dan update data
+        // $user = User::findOrFail($id);
+        // $user->update([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        // ]);
+
+        // Redirect kembali dengan pesan sukses
+        // return redirect()->route('UserWeb.edit', $id)->with('success', 'User berhasil diperbarui!');
     }
 
     /**

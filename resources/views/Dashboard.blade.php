@@ -644,11 +644,12 @@
                                             <td>
                                                 <form action="/" method="POST" class="d-inline ml-1">
                                                 @csrf
-                                                @method('DELETE')
-                                                    <button type="hidden" value="EDIT" name="_method" class="btn btn-sm btn-primary btn-icon" data-toggle="tooltip" title="Edit">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                {{-- @method('DELETE') --}}
+                                                <form action="{{ route('UserWeb.edit', $user->id) }}" method="GET" class="d-inline ml-1">
+                                                    <button type="submit" class="btn btn-sm btn-primary btn-icon" data-toggle="tooltip" title="Edit">
                                                         <i class="fas fa-pencil"></i>
                                                     </button>
+                                                </form>
                                                 </form>
                                                 <form action="{{ route('UserWeb.destroy', $user->id) }}"
                                                     method="POST" class="d-inline ml-1">
@@ -665,9 +666,9 @@
                                     </tbody>
                                     @endforeach
                                 </table>
-                                <div
-                                <div class=" float-right mt-3 mb-3 card-footer page-item disa text-center">
-                                    {{ $data->withQueryString()->links() }}
+                                <div>
+                                    <a href="{{ $data }}"> &raquo; </a>
+                                    <a href="{{ $data }}"> &laquo; </a>
                                 </div>
                             </div>
                         </div>
