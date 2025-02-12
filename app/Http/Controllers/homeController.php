@@ -10,7 +10,7 @@ class homeController extends Controller
 {
     public function username(){
 
-        $data = DB::table('users')->orderBy('id')->paginate(10);
+        $data = DB::table('users')->orderBy('id')->paginate(30);
 
         $allData = User::all();
 
