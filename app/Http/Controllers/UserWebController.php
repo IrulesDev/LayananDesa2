@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserWebController extends Controller
@@ -43,6 +44,9 @@ class UserWebController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        session()->flash('success', 'User ' . $user->name . ' deleted successfully.');
+        return redirect()->route('home')->with('success', 'User ' . $user->email . ' deleted successfully.');
     }
 }
