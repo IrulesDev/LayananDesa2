@@ -58,21 +58,27 @@
                             <div class="form-group">
                                 <label for="password" class="control-label">Password</label>
                                 <div class="input-group">
-                                    <input id="password" type="password" @error('password') is-invalid @enderror class="form-control" name="password" 
-                                    placeholder="Enter your password" tabindex="2" required>
-                                    <div class="input-grub-prepend">
-                                        <div class="input-grub-text">
-                                            <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;">
-                                            </i>
+                                    {{-- <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-lock text-muted"></i>
+                                        </div>
+                                    </div> --}}
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        placeholder="Enter your password" tabindex="2" required>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
                                         </div>
                                     </div>
-                                </div>
                                     @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                            @enderror   
                             </div>
+
 
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
