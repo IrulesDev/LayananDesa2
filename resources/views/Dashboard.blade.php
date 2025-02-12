@@ -27,7 +27,7 @@
                                 <h4>Total Admin</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                {{ $allData->count() }}
                             </div>
                         </div>
                     </div>
@@ -606,8 +606,8 @@
                         </div>
                     </form>
                 </div> --}}
-                <div class="col-lg-7 col-md-12 col-12 col-sm-12">
-                    <div class="card">
+                <div class="  col-12 ">
+                    <div class="card card-statistic-7">
                         <div class="card-header">
                             <h4>Latest Posts</h4>
                             <div class="card-header-action">
@@ -616,8 +616,8 @@
                             </div>
                         </div>
                         <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table-striped mb-0 table">
+                            {{-- <div class="table-responsive"> --}}
+                                <table class=" table">
                                     <thead>
                                         <tr>
                                             <th>Numb.</th>
@@ -633,7 +633,7 @@
                                             <td>
                                                 <a href="#"
                                                     class="font-weight-600"><img
-                                                        src="{{ asset('img/avatar/avatar-1.png') }}"
+                                                        src="{{asset('img/avatar/avatar-1.png') }}"
                                                         alt="avatar"
                                                         width="30"
                                                         class="rounded-circle mr-1"> {{ $user->name ??'no data' }} </a>
@@ -644,7 +644,7 @@
                                     </tbody>
                                     @endforeach
                                 </table>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
