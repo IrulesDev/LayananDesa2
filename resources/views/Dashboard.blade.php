@@ -624,6 +624,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Nik</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     @foreach ($data as $user)                                        
