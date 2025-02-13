@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\PrayerTimeService;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
@@ -12,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(PrayerTimeService::class, function ($app) {
+            return new PrayerTimeService(new \GuzzleHttp\Client());
+        });
+
     }
 
     /**
