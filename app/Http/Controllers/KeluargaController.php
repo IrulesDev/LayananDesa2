@@ -6,6 +6,7 @@ use App\Models\keluarga;
 use App\Models\User;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KeluargaController extends Controller
 {
@@ -100,5 +101,8 @@ class KeluargaController extends Controller
         $user->delete();
 
         return response()->json(['message' => $user->name .' deleted successfully']);
+    }
+    public function dashboard(){
+        return view('dashboard', ['user' => Auth::keluargas()]);
     }
 }

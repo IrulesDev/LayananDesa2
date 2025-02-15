@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\nikController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\usernameController;
 use App\Http\Controllers\UserWebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,15 +19,16 @@ Route::middleware(['auth'])->group(function () {
     //     return view('pages.dashboard',['email'=> $data->name]);
     // });
 
-    // CASE 2
-
-    Route::get('/home', [homeController::class, 'username']);
+    // CASE 2 username', [usernameController::class, 'username']);
+    Route::get('/username', [homeController::class, 'username']);
+    // Route::get('/nik', [nikController::class, 'nik']);
 
     // Route::get('/', function () {
     //     return view('pages.dashboard');
     // });
 
     Route::get('/', [homeController::class, 'username'])->name('home');
+    // Route::get('/', [nikController::class, 'nik'])->name('home');
 
     Route::resource('UserWeb', UserWebController::class);
 

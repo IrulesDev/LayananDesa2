@@ -609,7 +609,7 @@
                 <div class="  col-12 ">
                     <div class="card card-statistic-7">
                         <div class="card-header">
-                            <h4>Latest Posts</h4>
+                            <h4>Penduduk</h4>
                             <div class="card-header-action">
                                 <a href="#"
                                     class="btn btn-primary">View All</a>
@@ -627,10 +627,11 @@
                                             <th></th>
                                         </tr>
                                     </thead>
+                                    <?php $no = 1; ?>
                                     @foreach ($data as $user)                                        
                                     <tbody>
                                         <tr>
-                                            <td> {{ $user->id ?? 'no data' }} </td>
+                                            <td> {{ $no++ ?? 'no data' }} </td>
                                             <td>
                                                 <a href="#"
                                                     class="font-weight-600"><img
@@ -668,17 +669,7 @@
                                 </table>
                                 <nav aria-label="...">
                                     <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
+                                       {{ $data->links() }}
                                     </ul>
                                 </nav>
                             </div>
