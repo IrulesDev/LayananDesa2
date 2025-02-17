@@ -609,7 +609,7 @@
                 <div class="  col-12 ">
                     <div class="card card-statistic-7">
                         <div class="card-header">
-                            <h4>Penduduk</h4>
+                            <h4>keluarga</h4>
                             <div class="card-header-action">
                                 <a href="#"
                                     class="btn btn-primary">View All</a>
@@ -621,38 +621,37 @@
                                     <thead>
                                         <tr>
                                             <th>Numb.</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Nik</th>
+                                            <th>id</th>
+                                            <th>No. Kk</th>
                                             <th></th>
                                         </tr>
                                     </thead>
+                                    {{-- {{ dd($data) }} --}}
                                     <?php $no = 1; ?>
-                                    @foreach ($data as $user)                                        
+                                    @foreach ($data as $keluarga)                                        
                                     <tbody>
                                         <tr>
                                             <td> {{ $no++ ?? 'no data' }} </td>
+                                            <td>{{ $keluarga->id ?? 'null' }}</td>
                                             <td>
                                                 <a href="#"
                                                     class="font-weight-600"><img
                                                         src="{{asset('img/avatar/avatar-1.png') }}"
                                                         alt="avatar"
                                                         width="30"
-                                                        class="rounded-circle mr-1"> {{ $user->name ??'no data' }} </a>
+                                                        class="rounded-circle mr-1"> {{ $keluarga->no_kk ??'no data' }} </a>
                                             </td>
-                                            <td> {{ $user->email ?? 'no data' }} </td>
-                                            <td> {{ $user->nik ?? 'no data' }} </td>
                                             <td>
-                                                <form action="/" method="POST" class="d-inline ml-1">
+                                                {{-- <form action="/" method="POST" class="d-inline ml-1">
                                                 @csrf
-                                                {{-- @method('DELETE') --}}
-                                                <form action="{{ route('UserWeb.edit', $user->id) }}" method="GET" class="d-inline ml-1">
+                                                @method('DELETE')
+                                                <form action="{{ route('UserWeb.edit', $keluarga->id) }}" method="GET" class="d-inline ml-1">
                                                     <button type="submit" class="btn btn-sm btn-primary btn-icon" data-toggle="tooltip" title="Edit">
                                                         <i class="fas fa-pencil"></i>
                                                     </button>
                                                 </form>
-                                                </form>
-                                                <form action="{{ route('UserWeb.destroy', $user->id) }}"
+                                                </form> --}}
+                                                <form action="{{ route('keluarga.destroy', $keluarga->id) }}"
                                                     method="POST" class="d-inline ml-1">
                                                     @csrf
                                                     @method('DELETE')
