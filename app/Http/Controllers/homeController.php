@@ -15,7 +15,9 @@ class HomeController extends Controller
 
         $allKeluarga = keluarga::all();
 
-        return view('dashboard', ['data'=>$keluargas, 'allData'=>$allKeluarga]);
+        $allUser = User::all();
+
+        return view('dashboard', ['data'=>$keluargas, 'allData'=>$allKeluarga, 'allUser' => $allUser]);
 
     }
 
